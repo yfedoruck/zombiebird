@@ -31,6 +31,14 @@ public class Bird {
         velocity.y = -140;
     }
 
+    public boolean isFalling() {
+        return velocity.y > 110;
+    }
+
+    public boolean shouldntFlap() {
+        return velocity.y > 70;
+    }
+
     public float getX(){
         return position.x;
     }

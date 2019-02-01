@@ -2,7 +2,6 @@ package com.kilobolt.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.kilobolt.gameworld.GameRenderer;
 import com.kilobolt.gameworld.GameWorld;
 import com.kilobolt.zbhelpers.InputHandler;
