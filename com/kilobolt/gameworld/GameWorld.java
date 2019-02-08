@@ -19,6 +19,10 @@ public class GameWorld
     {
         bird.update(delta);
         scroller.update(delta);
+
+        if(scroller.collides(bird)){
+            scroller.stop();
+        }
     }
 
     public Bird getBird()

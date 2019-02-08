@@ -1,5 +1,6 @@
 package com.kilobolt.gameobjects;
 
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
@@ -12,7 +13,7 @@ public class Pipe extends Scrollable {
     public static final int SKULL_WIDTH = 24;
     public static final int SKULL_HEIGHT = 11;
 
-    private  float groundY;
+    private float groundY;
 
     public Pipe(float x, float y, int width, int height, float scrollSpeed, float groundY) {
         super(x, y, width, height, scrollSpeed);
@@ -25,7 +26,7 @@ public class Pipe extends Scrollable {
     }
 
     @Override
-    public void update(float delta){
+    public void update(float delta) {
         super.update(delta);
 
         barUp.set(position.x, position.y, width, height);
@@ -39,6 +40,17 @@ public class Pipe extends Scrollable {
     public void reset(float newX) {
         super.reset(newX);
         height = r.nextInt(90) + 15;
+    }
+
+    public boolean collides(Bird bird) {
+        if (position.x < bird.getX() + bird.getWidth()) {
+            return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
+                    || Intersector.overlaps(bird.getBoundingCircle(), barDown)
+                    || Intersector.overlaps(bird.getBoundingCircle(), skullUp)
+                    || Intersector.overlaps(bird.getBoundingCircle(), skullDown));
+        }
+
+        return false;
     }
 
     public Rectangle getSkullUp() {
